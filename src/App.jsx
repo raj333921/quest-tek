@@ -9,56 +9,104 @@ function App() {
   var jobs = [
                {
                  "jobRole": "Backend Developer",
-                 "jobId": "1"
+                 "jobId": "1",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "Qlick Developer",
-                 "jobId": "2"
+                 "jobId": "2",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "SAP HANA Developer",
-                 "jobId": "3"
+                 "jobId": "3",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "BODS Developer",
-                 "jobId": "4"
+                 "jobId": "4",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "Backend Developer",
-                 "jobId": "5"
+                 "jobId": "5",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "Qlick Developer",
-                 "jobId": "6"
+                 "jobId": "6",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "SAP HANA Developer",
-                 "jobId": "7"
+                 "jobId": "7",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "BODS Developer",
-                 "jobId": "8"
+                 "jobId": "8",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "Backend Developer",
-                 "jobId": "9"
+                 "jobId": "9",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "Qlick Developer",
-                 "jobId": "10"
+                 "jobId": "10",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "SAP HANA Developer",
-                 "jobId": "11"
+                 "jobId": "11",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                },
                {
                  "jobRole": "BODS Developer",
-                 "jobId": "12"
+                 "jobId": "12",
+                 "type": "Hybrid",
+                 "salary": "",
+                 "closeDate": "23/01/2025",
+                 "location": "Brussels"
                }
              ];
   const callMeth=()=> {
   return (jobs.forEach((item,key) => (
-                          <AvailableJobs key={key} role={item.jobRole}/>
+                          <AvailableJobs key={key} role={item.jobRole} />
   )))}
   return (
     <>
@@ -70,7 +118,7 @@ function App() {
             </header>
             <main>
               <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                {jobs.map((item) =><> <AvailableJobs key={item.jobId} role={item.jobRole}/> <br/></>)}
+                {jobs.map((item) =><> <AvailableJobs key={item.jobId} role={item.jobRole} type={item.type} salary={item.salary} closeDate={item.closeDate} location={item.location}/> <br/></>)}
               </div>
 
             </main>

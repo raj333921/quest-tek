@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/20/solid'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 
-export default function AvailableJobs({role}) {
+export default function AvailableJobs({role, type, salary, closeDate, location}) {
   return (
     <div className="lg:flex lg:items-center lg:justify-between">
       <div className="min-w-0 flex-1">
@@ -20,19 +20,19 @@ export default function AvailableJobs({role}) {
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <BriefcaseIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            Full-time
+            {type}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <MapPinIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            Remote
+            {location}
           </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
+          { salary ? <div className="mt-2 flex items-center text-sm text-gray-500">
             <CurrencyDollarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            $120k &ndash; $140k
-          </div>
+            salary
+          </div> : ''}
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            Closing on January 9, 2020
+            Closes on {closeDate}
           </div>
         </div>
       </div>
