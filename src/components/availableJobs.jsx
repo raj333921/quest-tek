@@ -8,31 +8,37 @@ import {
   MapPinIcon,
   PencilIcon,
 } from '@heroicons/react/20/solid'
+import React from 'react'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { useNavigate } from "react-router-dom"
+import {ContextJobStore} from '../context/jobStore'
+import * as Constants from "../constants"
 
-export default function AvailableJobs({role, type, salary, closeDate, location}) {
+export default function AvailableJobs({job}) {
+    const navigate = useNavigate();
+    const {dispatch} = React.useContext(ContextJobStore);
   return (
     <div className="lg:flex lg:items-center lg:justify-between">
       <div className="min-w-0 flex-1">
         <h2 className="text-1xl font-bold text-yellow-600 sm:truncate sm:text-3xl sm:tracking-tight" style={{textAlign:"left"}}>
-          {role}
+          {job.jobRole}
         </h2>
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <BriefcaseIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            {type}
+            {job.type}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <MapPinIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            {location}
+            {job.location}
           </div>
-          { salary ? <div className="mt-2 flex items-center text-sm text-gray-500">
+          { job.salary ? <div className="mt-2 flex items-center text-sm text-gray-500">
             <CurrencyDollarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            salary
+            job.salary
           </div> : ''}
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            Closes on {closeDate}
+            Closes on {job.closeDate}
           </div>
         </div>
       </div>
@@ -40,20 +46,29 @@ export default function AvailableJobs({role, type, salary, closeDate, location})
         <span className="sm:ml-3">
           <button
             type="button"
+            id="view"
+            onClick={() => {
+                   dispatch({
+                    type: 'JOB',
+                    content: job
+                   });
+                   navigate(Constants.VIEW_JOB);
+                  }}
             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
           >
-            <LinkIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
-            View
+            <LinkIcon avria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
+            {Constants.VIEW}
           </button>
         </span>
 
         <span className="sm:ml-3">
           <button
             type="button"
+            id="apply"
             className="inline-flex items-center rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             <CheckIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5" />
-            Apply
+            {Constants.APPLY}
           </button>
         </span>
 
