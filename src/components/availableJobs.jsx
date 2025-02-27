@@ -3,10 +3,12 @@ import {
   CalendarIcon,
   CheckIcon,
   ChevronDownIcon,
-  CurrencyDollarIcon,
+  CurrencyEuroIcon,
   LinkIcon,
   MapPinIcon,
-  PencilIcon,
+  UserCircleIcon,
+  LanguageIcon,
+  BuildingOfficeIcon
 } from '@heroicons/react/20/solid'
 import React from 'react'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
@@ -24,16 +26,28 @@ export default function AvailableJobs({job}) {
           {job.jobRole}
         </h2>
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+        <div className="mt-2 flex items-center text-sm text-gray-500">
+            <BuildingOfficeIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+                    {job.type}
+                  </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <BriefcaseIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            {job.type}
+            {job.employeeType}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <MapPinIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
             {job.location}
           </div>
+          <div className="mt-2 flex items-center text-sm text-gray-500">
+            <UserCircleIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+                      {job.experience}
+                    </div>
+                    <div className="mt-2 flex items-center text-sm text-gray-500">
+                                <LanguageIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+                                          {job.language}
+                                        </div>
           { job.salary ? <div className="mt-2 flex items-center text-sm text-gray-500">
-            <CurrencyDollarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+            <CurrencyEuroIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
             job.salary
           </div> : ''}
           <div className="mt-2 flex items-center text-sm text-gray-500">
@@ -65,6 +79,13 @@ export default function AvailableJobs({job}) {
           <button
             type="button"
             id="apply"
+            onClick={() => {
+                               dispatch({
+                                type: 'JOB',
+                                content: job
+                               });
+                               navigate(Constants.APPLY_JOB);
+                              }}
             className="inline-flex items-center rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             <CheckIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5" />

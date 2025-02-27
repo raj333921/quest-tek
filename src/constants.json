@@ -3,5 +3,7 @@
   "VIEW_JOB" : "/viewJob",
   "APPLY" : "Apply Job",
   "VIEW" : "VIEW",
-  "BACK" : "Back"
+  "BACK" : "Back",
+  "COMPANY" : "/company",
+  "APPLY_JOB": "/applyJob"
 }

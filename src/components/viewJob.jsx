@@ -4,7 +4,7 @@ import React, {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import * as Constants from "../constants"
 export default function ViewJob() {
- const {state} = React.useContext(ContextJobStore);
+ const {state,dispatch} = React.useContext(ContextJobStore);
  const navigate = useNavigate();
  useEffect(() => {
  if(!state || !state.content){
@@ -14,9 +14,21 @@ export default function ViewJob() {
 
  const buttonGroup = () =>{
  return (
+
   <div className="text-center">
+    <header className="">
+                 <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                   <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{textAlign:"left"}}></h1>
+                 </div>
+               </header>
                        <div className="mt-10 flex items-center justify-center gap-x-6">
-                       <button
+                       <button onClick={() => {
+                                                  dispatch({
+                                                   type: 'JOB',
+                                                   content: state.content
+                                                  });
+                                                  navigate(Constants.APPLY_JOB);
+                                                 }}
                                    type="button"
                                    id="apply"
                                    className="inline-flex items-center rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -47,6 +59,18 @@ export default function ViewJob() {
             <dt className="text-sm/6 font-medium text-gray-900">Type</dt>
             <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{state.content.type}</dd>
           </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt className="text-sm/6 font-medium text-gray-900">Language</dt>
+                      <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{state.content.language}</dd>
+                    </div>
+                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm/6 font-medium text-gray-900">Experience</dt>
+                                <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{state.content.experience}</dd>
+                              </div>
+                               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                                              <dt className="text-sm/6 font-medium text-gray-900">Employee Type</dt>
+                                                              <dd className="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{state.content.employeeType}</dd>
+                                                            </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 
             <dt className="text-sm/6 font-medium text-gray-900">Location</dt>
