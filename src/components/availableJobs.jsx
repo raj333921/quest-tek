@@ -15,6 +15,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { useNavigate } from "react-router-dom"
 import {ContextJobStore} from '../context/jobStore'
 import * as Constants from "../constants"
+import {dataFormat} from '../utilities/common'
 
 export default function AvailableJobs({job}) {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function AvailableJobs({job}) {
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
         <div className="mt-2 flex items-center text-sm text-gray-500">
             <BuildingOfficeIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-                    {job.type}
+                    {job.commuteType}
                   </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <BriefcaseIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
@@ -48,11 +49,11 @@ export default function AvailableJobs({job}) {
                                         </div>
           { job.salary ? <div className="mt-2 flex items-center text-sm text-gray-500">
             <CurrencyEuroIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            job.salary
+            {job.salary}
           </div> : ''}
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-            Closes on {job.closeDate}
+            Closes on {dataFormat(job.closeDate)}
           </div>
         </div>
       </div>
