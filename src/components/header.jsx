@@ -58,10 +58,10 @@ export default function Header() {
                   href={Constants.COMPANY} className="text-sm/6 font-semibold text-gray-900">
                     Company
                   </a>
+                   <a href="#" className="text-sm/6 font-semibold text-gray-900">
+                                  Log In
+                            </a>
                 </PopoverGroup>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-
-          </a>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -101,7 +101,7 @@ export default function Header() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-
+                    Log In
                 </a>
               </div>
             </div>
