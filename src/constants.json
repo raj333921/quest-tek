@@ -6,5 +6,7 @@
   "BACK" : "Back",
   "COMPANY" : "/comp",
   "APPLY_JOB": "/applyJob",
+  "LOGIN": "/login",
+  "POST_JOB": "/postJob",
   "EMAILID": "xy@gmail.com"
 }

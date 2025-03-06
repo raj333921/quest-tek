@@ -41,7 +41,8 @@ export default function ApplyForJob() {
     return false;
  }
  const saveResume = (event) =>{
-    let url = Urls.MAIN_URL + Urls.APPLYJOB;
+    //let url = Urls.MAIN_URL + Urls.APPLYJOB;
+    let url = "https://sachadigi.com/freshdb/applyJob"
     setInputVal({...inputVal,jobRole: state.content.jobRole, jobId: state.content.id,resume: file})
     if(event?.target.id === "save" && state?.content){
     let flag = false;
