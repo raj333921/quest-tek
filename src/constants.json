@@ -8,5 +8,7 @@
   "APPLY_JOB": "/applyJob",
   "LOGIN": "/login",
   "POST_JOB": "/postJob",
-  "EMAILID": "xy@gmail.com"
+  "EMAILID": "xy@gmail.com",
+  "COMPANYNAME": "SACHA DiGi 2.0",
+  "OWNER": "VRK"
 }

@@ -42,11 +42,11 @@ export default function AvailableJobs({job}) {
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <UserCircleIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
                       {job.experience}
-                    </div>
-                    <div className="mt-2 flex items-center text-sm text-gray-500">
-                                <LanguageIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
-                                          {job.language}
-                                        </div>
+          </div>
+          <div className="mt-2 flex items-center text-sm text-gray-500">
+             <LanguageIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+             {job.language}
+             </div>
           { job.salary ? <div className="mt-2 flex items-center text-sm text-gray-500">
             <CurrencyEuroIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
             {job.salary}

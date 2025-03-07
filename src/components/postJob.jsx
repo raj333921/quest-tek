@@ -1,7 +1,37 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
-
+import React, { useState } from 'react';
 export default function PostJob() {
+
+const [formData, setFormData] = useState({
+    client: '',
+    type: '',
+    language: '',
+    employeeType: '',
+    experience: '',
+    location: '',
+    salary: '',
+    jobDescription: '',
+    technicalDetails: ''
+  });
+
+ const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleClick = (event) => {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // You can now handle the form data (e.g., send to an API)
+      let url = "https://sachadigi.com/freshdb/applyJob"
+      console.log('Form Data Submitted:', formData);
+    };
+
+
   return (
   <>
   <header className="">
@@ -32,6 +62,8 @@ export default function PostJob() {
                                                                                 id="client"
                                                                                 name="client"
                                                                                 type="text"
+                                                                                value={formData.client}
+                                                                                onChange={handleChange}
                                                                                 autoComplete="client"
                                                                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                                                                               />
@@ -44,6 +76,8 @@ export default function PostJob() {
               <div className="mt-2 grid grid-cols-1">
               <select id="type" name="type"
                                 autoComplete="Regular/Hybrid/Remote"
+                                value={formData.type}
+                                onChange={handleChange}
                                 className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                               >
                                 <option value=''>Select</option>
@@ -63,7 +97,9 @@ export default function PostJob() {
                 Language(EN/FR/NL)*
               </label>
               <div className="mt-2 grid grid-cols-1">
-                            <select id="type" name="type"
+                            <select id="language" name="language"
+                                value={formData.language}
+                                onChange={handleChange}
                                               autoComplete="Regular/Hybrid/Remote"
                                               className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                                             >
@@ -88,6 +124,8 @@ export default function PostJob() {
                           </label>
                           <div className="mt-2 grid grid-cols-1">
                                         <select id="employeeType" name="employeeType"
+                                value={formData.employeeType}
+                                onChange={handleChange}
                                                           autoComplete="Regular/Hybrid/Remote"
                                                           className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                                                         >
@@ -107,6 +145,8 @@ export default function PostJob() {
                           </label>
                           <div className="mt-2 grid grid-cols-1">
                                         <select id="experience" name="experience"
+                                value={formData.experience}
+                                onChange={handleChange}
                                                               autoComplete="1 year"
                                                           className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                                                         >
@@ -143,6 +183,8 @@ export default function PostJob() {
                 <input
                                   id="location"
                                   name="location"
+                                value={formData.location}
+                                onChange={handleChange}
                                   type="text"
                                   autoComplete="location"
                                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
@@ -150,15 +192,17 @@ export default function PostJob() {
               </div>
             </div>
             <div className="sm:col-span-3">
-                          <label htmlFor="location" className="block text-sm/6 font-medium text-gray-900">
+                          <label htmlFor="salary" className="block text-sm/6 font-medium text-gray-900">
                             Salary(Gross/Per day)
                           </label>
                           <div className="mt-2 grid grid-cols-1">
                             <input
-                                              id="location"
-                                              name="location"
+                                              id="salary"
+                                              name="salary"
+                                value={formData.salary}
+                                onChange={handleChange}
                                               type="text"
-                                              autoComplete="location"
+                                              autoComplete="salary"
                                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                                             />
                           </div>
@@ -171,13 +215,15 @@ export default function PostJob() {
 
 
             <div className="col-span-full">
-              <label htmlFor="jobDiscription" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="jobDescription" className="block text-sm/6 font-medium text-gray-900">
                 Job Description*
               </label>
               <div className="mt-2">
                 <textarea
-                  id="jobDiscription"
-                  name="jobDiscription"
+                  id="jobDescription"
+                  name="jobDescription"
+                                value={formData.jobDescription}
+                                onChange={handleChange}
                   rows={10}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                   defaultValue={''}
@@ -196,6 +242,8 @@ export default function PostJob() {
                           <textarea
                             id="technicalDetails"
                             name="technicalDetails"
+                                value={formData.technicalDetails}
+                                onChange={handleChange}
                             rows={10}
                             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                             defaultValue={''}
@@ -212,6 +260,7 @@ export default function PostJob() {
         </button>
         <button
           type="submit"
+           onClick={handleClick}
           className="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
         >
           Save

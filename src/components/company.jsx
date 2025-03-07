@@ -1,3 +1,6 @@
+
+import * as Constants from "../constants"
+
 export default function Company() {
   return (
     <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -22,11 +25,11 @@ export default function Company() {
               className="mx-auto size-10 rounded-full"
             />
             <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-              <div className="font-semibold text-gray-900">Siva Yaganti</div>
+              <div className="font-semibold text-gray-900">{Constants.OWNER}</div>
               <svg width={3} height={3} viewBox="0 0 2 2" aria-hidden="true" className="fill-gray-900">
                 <circle r={1} cx={1} cy={1} />
               </svg>
-              <div className="text-gray-600">CEO of Workcation</div>
+              <div className="text-gray-600">MD of Workcation</div>
             </div>
           </figcaption>
         </figure>

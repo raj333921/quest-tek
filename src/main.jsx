@@ -15,7 +15,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-        <Route path={Constants.HOME_PAGE} element={<App />} />
+        <Route exact path={Constants.HOME_PAGE} element={<App />} />
         <Route path={Constants.VIEW_JOB} element={<ViewJob />} />
         <Route path={Constants.COMPANY} element={<Company />} />
         <Route path={Constants.APPLY_JOB} element={<ApplyForJob />} />
@@ -28,8 +28,10 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
   <ContextJobStoreProvider>
-   <Header />
-       <RouterProvider router={router} />
+    <Header />
+    <RouterProvider router={router} >
+
+    </RouterProvider>
    </ContextJobStoreProvider>
   </StrictMode>,
 )
