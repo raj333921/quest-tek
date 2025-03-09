@@ -23,13 +23,20 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-import * as Constants from "../constants"
+import * as Constants from "../constants";
+
 import { useNavigate } from 'react-router-dom';
 
-
 const Header = () => {
-
-const companyName = "Quest-Tek Solutions"
+const navigate = useNavigate();
+  const handleClick = (event) => {
+    event.preventDefault(); // Prevent default anchor tag behavior
+    if(event.target.id === Constants.COMPANY){
+    navigate(Constants.COMPANY); // Navigate to the new path
+    }else if(event.target.id === Constants.LOGIN){
+    navigate(Constants.LOGIN);
+    }
+  };
 const callsToAction = [
 ]
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -57,11 +64,10 @@ const callsToAction = [
                    <a href="/" className="text-sm/6 font-semibold text-gray-900">
                     Jobs
                   </a>
-                  <a
-                  href={Constants.COMPANY} className="text-sm/6 font-semibold text-gray-900">
+                  <a onClick={handleClick} id={Constants.COMPANY} className="text-sm/6 font-semibold text-gray-900">
                     Company
                   </a>
-                   <a href={Constants.LOGIN} className="text-sm/6 font-semibold text-gray-900">
+                   <a onClick={handleClick} id={Constants.LOGIN} className="text-sm/6 font-semibold text-gray-900">
                                   Log In
                             </a>
                 </PopoverGroup>
@@ -98,7 +104,7 @@ const callsToAction = [
                   Jobs
                 </a>
                 <a
-                  href={Constants.COMPANY}
+                 onClick={handleClick} id={Constants.COMPANY}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
                   Company
@@ -106,7 +112,7 @@ const callsToAction = [
               </div>
               <div className="py-6">
                 <a
-                  href={Constants.LOGIN}
+                 onClick={handleClick} id={Constants.LOGIN}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
                     Log In
