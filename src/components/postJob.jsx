@@ -2,18 +2,21 @@ import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import React, { useState } from 'react';
 import Header from './header'
+import axios from 'axios'
+
 export default function PostJob() {
 
 const [formData, setFormData] = useState({
+    jobRole: '',
     client: '',
-    type: '',
+    commuteType: '',
     language: '',
     employeeType: '',
     experience: '',
     location: '',
     salary: '',
-    jobDescription: '',
-    technicalDetails: ''
+    description: '',
+    techDetails: ''
   });
 
  const handleChange = (e) => {
@@ -26,10 +29,18 @@ const [formData, setFormData] = useState({
 
   const handleClick = (event) => {
       event.preventDefault(); // Prevent the default form submission behavior
-
-      // You can now handle the form data (e.g., send to an API)
-      let url = "https://sachadigi.com/freshdb/applyJob"
+      let url = "https://sachadigi.com/freshdb/jobListing"
       console.log('Form Data Submitted:', formData);
+      axios.post(url, formData, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }).then(function (response) {
+                  console.log(response.data)
+                })
+                .catch(function (error) {
+                  console.log(error)
+                });
     };
 
 
@@ -55,6 +66,22 @@ const [formData, setFormData] = useState({
         <div className="border-b border-yellow-900/10 pb-12">
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
+                                                                      <label htmlFor="jobRole" className="block text-sm/6 font-medium text-gray-900">
+                                                                        Job Role*
+                                                                      </label>
+                                                                      <div className="mt-2 grid grid-cols-1">
+                                                                        <input
+                                                                                          id="jobRole"
+                                                                                          name="jobRole"
+                                                                                          type="text"
+                                                                                          value={formData.jobRole}
+                                                                                          onChange={handleChange}
+                                                                                          autoComplete="client"
+                                                                                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
+                                                                                        />
+                                                                      </div>
+                                                                    </div>
             <div className="sm:col-span-3">
                                                             <label htmlFor="client" className="block text-sm/6 font-medium text-gray-900">
                                                               Client*
@@ -72,13 +99,13 @@ const [formData, setFormData] = useState({
                                                             </div>
                                                           </div>
             <div className="sm:col-span-3">
-              <label htmlFor="type" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="commuteType" className="block text-sm/6 font-medium text-gray-900">
                 Type(Daily,Hybrid,Remote)*
               </label>
               <div className="mt-2 grid grid-cols-1">
-              <select id="type" name="type"
+              <select id="commuteType" name="commuteType"
                                 autoComplete="Regular/Hybrid/Remote"
-                                value={formData.type}
+                                value={formData.commuteType}
                                 onChange={handleChange}
                                 className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
                               >
@@ -217,14 +244,14 @@ const [formData, setFormData] = useState({
 
 
             <div className="col-span-full">
-              <label htmlFor="jobDescription" className="block text-sm/6 font-medium text-gray-900">
+              <label htmlFor="description" className="block text-sm/6 font-medium text-gray-900">
                 Job Description*
               </label>
               <div className="mt-2">
                 <textarea
-                  id="jobDescription"
-                  name="jobDescription"
-                                value={formData.jobDescription}
+                  id="description"
+                  name="description"
+                                value={formData.description}
                                 onChange={handleChange}
                   rows={10}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
@@ -237,14 +264,14 @@ const [formData, setFormData] = useState({
 
 
                       <div className="col-span-full">
-                        <label htmlFor="technicalDetails" className="block text-sm/6 font-medium text-gray-900">
+                        <label htmlFor="techDetails" className="block text-sm/6 font-medium text-gray-900">
                           Technical Details*
                         </label>
                         <div className="mt-2">
                           <textarea
-                            id="technicalDetails"
-                            name="technicalDetails"
-                                value={formData.technicalDetails}
+                            id="techDetails"
+                            name="techDetails"
+                                value={formData.techDetails}
                                 onChange={handleChange}
                             rows={10}
                             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-yellow-600 sm:text-sm/6"
