@@ -3,6 +3,7 @@ import {ContextJobStore} from '../context/jobStore'
 import React, {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import * as Constants from "../constants"
+import Header from './header'
 export default function ViewJob() {
  const {state,dispatch} = React.useContext(ContextJobStore);
  const navigate = useNavigate();
@@ -14,7 +15,6 @@ export default function ViewJob() {
 
  const buttonGroup = () =>{
  return (
-
   <div className="text-center">
     <header className="">
                  <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -43,7 +43,8 @@ export default function ViewJob() {
                      </div>)
  }
   return (
-    <div>
+    <>
+    <Header />
     {buttonGroup()}
       <div className="mt-6 border-t border-gray-100">
         <dl className="divide-y divide-gray-100">
@@ -96,6 +97,6 @@ export default function ViewJob() {
         </dl>
       </div>
     {buttonGroup()}
-    </div>
+    </>
   )
 }

@@ -2,6 +2,7 @@ import * as Constants from "../constants"
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 
+import Header from './header'
 
 export default function Login() {
 
@@ -28,7 +29,8 @@ const handleClick = (event) => {
     navigate(Constants.POST_JOB);
   };
   return (
-    <>
+     <>
+        <Header />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">

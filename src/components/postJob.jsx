@@ -1,6 +1,7 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import React, { useState } from 'react';
+import Header from './header'
 export default function PostJob() {
 
 const [formData, setFormData] = useState({
@@ -33,7 +34,8 @@ const [formData, setFormData] = useState({
 
 
   return (
-  <>
+<>
+        <Header />
   <header className="">
                        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                          <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{textAlign:"left"}}></h1>

@@ -28,9 +28,7 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
   <ContextJobStoreProvider>
-    <Header />
     <RouterProvider router={router} >
-
     </RouterProvider>
    </ContextJobStoreProvider>
   </StrictMode>,

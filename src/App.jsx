@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Header from './components/header'
 import axios from 'axios'
 import './App.css'
 import AvailableJobs from './components/availableJobs'
@@ -19,6 +20,7 @@ function App() {
  },[]);
   return (
     <>
+    <Header />
     <header className="">
               <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{textAlign:"left"}}>Available Jobs</h1>
