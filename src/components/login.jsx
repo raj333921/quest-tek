@@ -1,26 +1,26 @@
 import * as Constants from "../constants"
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 
 import Header from './header'
 
 export default function Login() {
 
-const navigate = useNavigate();
-const [formData, setFormData] = useState({
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
     pwd: '',
     email: '',
   });
 
-const handleChange = (e) => {
-      const { name, value} = e.target;
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-const handleClick = (event) => {
+  const handleClick = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // You can now handle the form data (e.g., send to an API)
@@ -29,8 +29,8 @@ const handleClick = (event) => {
     navigate(Constants.POST_JOB);
   };
   return (
-     <>
-        <Header />
+    <>
+      <Header />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">

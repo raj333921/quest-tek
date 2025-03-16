@@ -1,11 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Header from './components/header'
 import axios from 'axios'
 import './App.css'
 import AvailableJobs from './components/availableJobs'
-import React, { useEffect } from 'react'
+import React from 'react'
 function App() {
   const [jobData, setJobData] = React.useState(null);
   const endpoints = [

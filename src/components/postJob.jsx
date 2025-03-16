@@ -1,14 +1,10 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './header'
 import axios from 'axios'
 
 export default function PostJob() {
 
-  const [value, setValue] = useState({
-    startDate: null,
-    endDate: null
-  });
   const [formData, setFormData] = useState({
     jobRole: '',
     client: '',
