@@ -6,6 +6,10 @@ import axios from 'axios'
 
 export default function PostJob() {
 
+ const [value, setValue] = useState({
+        startDate: null,
+        endDate: null
+    });
 const [formData, setFormData] = useState({
     jobRole: '',
     client: '',
@@ -280,7 +284,6 @@ const [formData, setFormData] = useState({
                         </div>
                       </div>
                     </div>
-
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
