@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useState } from 'react';
-import Header from './header'
+import AuthHeader from './authHeader'
 import axios from 'axios'
 
 export default function PostJob() {
@@ -45,7 +45,7 @@ export default function PostJob() {
 
   return (
     <>
-      <Header />
+      <AuthHeader />
       <header className="">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{ textAlign: "left" }}></h1>

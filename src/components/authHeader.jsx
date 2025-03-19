@@ -15,14 +15,12 @@ import * as Constants from "../constants";
 
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const AuthHeader = () => {
   const navigate = useNavigate();
   const handleClick = (event) => {
     event.preventDefault(); // Prevent default anchor tag behavior
-    if (event.target.id === Constants.COMPANY) {
-      navigate(Constants.COMPANY); // Navigate to the new path
-    } else if (event.target.id === Constants.LOGIN) {
-      navigate(Constants.LOGIN);
+    if (event.target.id === Constants.LOGOUT) {
+      navigate(Constants.HOME); // Navigate to the new path
     }
   };
 
@@ -49,13 +47,10 @@ const Header = () => {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
             <a href="/" className="text-sm/6 font-semibold text-gray-900">
-              Jobs
+
             </a>
-            <a onClick={handleClick} id={Constants.COMPANY} className="text-sm/6 font-semibold text-gray-900">
-              Company
-            </a>
-            <a onClick={handleClick} id={Constants.LOGIN} className="text-sm/6 font-semibold text-gray-900">
-              Log In <span aria-hidden="true">&rarr;</span>
+            <a onClick={handleClick} id={Constants.LOGOUT} className="text-sm/6 font-semibold text-gray-900">
+              Log out
             </a>
           </PopoverGroup>
         </div>
@@ -83,21 +78,16 @@ const Header = () => {
                   href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Jobs
+
                 </a>
-                <a
-                  onClick={handleClick} id={Constants.COMPANY}
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Company
-                </a>
+
               </div>
               <div className="py-6">
                 <a
-                  onClick={handleClick} id={Constants.LOGIN}
+                  onClick={handleClick} id={Constants.LOGOUT}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Log In
+                  Log Out
                 </a>
               </div>
             </div>
@@ -107,4 +97,4 @@ const Header = () => {
     </header>
   )
 }
-export default Header;
+export default AuthHeader;

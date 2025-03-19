@@ -42,6 +42,9 @@ export default function ApplyForJob() {
 
     return false;
   }
+  const scrollTo = (x, y) => {
+    window.scrollTo(x, y);
+  }
   const saveResume = (event) => {
     let url = Urls.MAIN_URL + Urls.APPLYJOB;
     //let url = "https://sachadigi.com/freshdb/applyJob"
@@ -52,17 +55,21 @@ export default function ApplyForJob() {
       switch (true) {
         case check(inputVal.firstName):
           flag = true;
+          scrollTo(0, 0);
           setErrorVal({ ...errorVal, firstNameError: true });
           break;
         case check(inputVal.lastName):
           flag = true;
+          scrollTo(0, 40);
           setErrorVal({ ...errorVal, lastNameError: true });
           break;
         case check(inputVal.emailId):
+          scrollTo(0, 40);
           flag = true;
           setErrorVal({ ...errorVal, emailIdError: true });
           break;
         case check(file):
+          scrollTo(0, 300);
           flag = true;
           setErrorVal({ ...errorVal, resumeError: true });
           break;
