@@ -15,17 +15,16 @@ export default function Login() {
     pwd: '',
     userId: '',
   });
-
   let initial = { "userIdError": false, "pwdError": false }
   const [errorVal, setErrorVal] = useState(initial);
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setErrorVal(initial);
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-
   const { state, dispatch } = React.useContext(ContextJobStore);
   const check = (value) => {
     if (value === '' || value === null || value === undefined) {
@@ -33,11 +32,9 @@ export default function Login() {
     }
     return false;
   };
-
   const scrollTo = (x, y) => {
     window.scrollTo(x, y);
-  }
-
+  };
   const handleClick = (event) => {
     // Prevent the default form submission behavior
     event.preventDefault();

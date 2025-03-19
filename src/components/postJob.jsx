@@ -1,10 +1,17 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import AuthHeader from './authHeader'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom"
+import { ContextJobStore } from '../context/jobStore'
+import * as Constants from "../constants"
 
 export default function PostJob() {
 
+  const navigate = useNavigate();
+
+  //const [loader, setLoader] = useState(false);
+  const { state } = React.useContext(ContextJobStore);
   const [formData, setFormData] = useState({
     jobRole: '',
     client: '',
@@ -18,18 +25,89 @@ export default function PostJob() {
     techDetails: ''
   });
 
+  let initial = { "jobRoleError": false, "clientError": false, "commuteTypeError": false, "languageError": false, "employeeTypeError": false, "experienceError": false, "locationError": false, "salaryError": false, "descriptionError": false, "techDetailsError": false };
+  const [errorVal, setErrorVal] = useState(initial);
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setErrorVal(initial);
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
+  useEffect(() => {
+    if (!state || !state.content) {
+      navigate(Constants.HOME_PAGE);
+    }
+  }, []);
+
+  const scrollTo = (x, y) => {
+    window.scrollTo(x, y);
+  };
+  const check = (value) => {
+    if (value === '' || value === null || value === undefined) {
+      return true;
+    }
+    return false;
+  };
   const handleClick = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     let url = "https://sachadigi.com/freshdb/jobListing"
     console.log('Form Data Submitted:', formData);
+    let flag = false;
+    setErrorVal(initial);
+    switch (true) {
+      case check(formData.jobRole):
+        flag = true;
+        scrollTo(0, 0);
+        setErrorVal({ ...errorVal, jobRoleError: true });
+        break;
+      case check(formData.client):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, clientError: true });
+        break;
+      case check(formData.commuteType):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, commuteTypeError: true });
+        break;
+      case check(formData.language):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, languageError: true });
+        break;
+      case check(formData.employeeType):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, employeeTypeError: true });
+        break;
+      case check(formData.experience):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, experienceError: true });
+        break;
+      case check(formData.description):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, descriptionError: true });
+        break;
+      case check(formData.salary):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, salaryError: true });
+        break;
+      case check(formData.techDetails):
+        flag = true;
+        scrollTo(0, 40);
+        setErrorVal({ ...errorVal, techDetailsError: true });
+        break;
+
+    }
+    if (flag) {
+      return false;
+    };
     axios.post(url, formData, {
       headers: {
         'Content-Type': 'application/json'
@@ -58,8 +136,6 @@ export default function PostJob() {
             <p className="mt-1 text-sm/6 text-gray-600">
               This information will be displayed publicly so be careful what you share.
             </p>
-
-
           </div>
 
           <div className="border-b border-yellow-900/10 pb-12">
@@ -67,7 +143,7 @@ export default function PostJob() {
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label htmlFor="jobRole" className="block text-sm/6 font-medium text-gray-900">
-                  Job Role*
+                  {errorVal.jobRoleError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Job Role</span> : "Job Role*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <input
@@ -83,7 +159,7 @@ export default function PostJob() {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="client" className="block text-sm/6 font-medium text-gray-900">
-                  Client*
+                  {errorVal.clientError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Client Name</span> : "Client Name*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <input
@@ -99,7 +175,7 @@ export default function PostJob() {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="commuteType" className="block text-sm/6 font-medium text-gray-900">
-                  Type(Daily,Hybrid,Remote)*
+                  {errorVal.commuteTypeError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Type(Daily,Hybrid,Remote)</span> : "Type(Daily,Hybrid,Remote)*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <select id="commuteType" name="commuteType"
@@ -122,7 +198,7 @@ export default function PostJob() {
 
               <div className="sm:col-span-3">
                 <label htmlFor="language" className="block text-sm/6 font-medium text-gray-900">
-                  Language(EN/FR/NL)*
+                  {errorVal.languageError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Language(EN/FR/NL)</span> : "Language(EN/FR/NL)*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <select id="language" name="language"
@@ -148,7 +224,8 @@ export default function PostJob() {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="employeeType" className="block text-sm/6 font-medium text-gray-900">
-                  Employee type(Internal/Freelance)*
+                  {errorVal.employeeTypeError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Employee type(Internal/Freelance)</span> : "Employee type(Internal/Freelance)*"}
+
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <select id="employeeType" name="employeeType"
