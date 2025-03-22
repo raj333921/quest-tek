@@ -1,5 +1,6 @@
 {
-  "MAIN_URL": "https://sachadigi.com/freshdb/",
+  "MAIN_URL": "http://localhost:3143/freshdb/",
   "GET_JOB": "jobListing",
-  "APPLYJOB": "applyJob"
+  "APPLYJOB": "applyJob",
+  "LOGIN":"users/validate"
 }

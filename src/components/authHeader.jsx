@@ -10,12 +10,12 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-
+import { PropTypes } from 'prop-types'
 import * as Constants from "../constants";
 
 import { useNavigate } from 'react-router-dom';
 
-const AuthHeader = () => {
+const AuthHeader = ({name}) => {
   const navigate = useNavigate();
   const handleClick = (event) => {
     event.preventDefault(); // Prevent default anchor tag behavior
@@ -46,8 +46,8 @@ const AuthHeader = () => {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-            <a href="/" className="text-sm/6 font-semibold text-gray-900">
-
+            <a className="text-sm/6 font-semibold text-yellow-600">
+                {name}
             </a>
             <a onClick={handleClick} id={Constants.LOGOUT} className="text-sm/6 font-semibold text-gray-900">
               Log out
@@ -75,17 +75,16 @@ const AuthHeader = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <a
-                  href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-yellow-600 hover:bg-gray-50"
                 >
-
+                    {name}
                 </a>
 
               </div>
               <div className="py-6">
                 <a
                   onClick={handleClick} id={Constants.LOGOUT}
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 cursorPointer"
                 >
                   Log Out
                 </a>
@@ -96,5 +95,9 @@ const AuthHeader = () => {
       </Dialog>
     </header>
   )
+}
+
+AuthHeader.propTypes = {
+  name: PropTypes.string
 }
 export default AuthHeader;

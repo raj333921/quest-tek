@@ -3,10 +3,11 @@ import axios from 'axios'
 import './App.css'
 import AvailableJobs from './components/availableJobs'
 import React from 'react'
+import * as Urls from "./utilities/urls"
 function App() {
   const [jobData, setJobData] = React.useState(null);
   const endpoints = [
-    'https://sachadigi.com/freshdb/jobListing'
+    Urls.MAIN_URL + Urls.GET_JOB
   ];
   React.useEffect(() => {
     axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then(

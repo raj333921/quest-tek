@@ -4,4 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
+.cursorPointer{
+  cursor: pointer;
+}
 @import "tailwindcss";

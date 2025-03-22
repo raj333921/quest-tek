@@ -51,10 +51,10 @@ const Header = () => {
             <a href="/" className="text-sm/6 font-semibold text-gray-900">
               Jobs
             </a>
-            <a onClick={handleClick} id={Constants.COMPANY} className="text-sm/6 font-semibold text-gray-900">
+            <a onClick={handleClick} id={Constants.COMPANY} className="text-sm/6 font-semibold text-gray-900 cursorPointer">
               Company
             </a>
-            <a onClick={handleClick} id={Constants.LOGIN} className="text-sm/6 font-semibold text-gray-900">
+            <a onClick={handleClick} id={Constants.LOGIN} className="text-sm/6 font-semibold text-gray-900 cursorPointer">
               Log In <span aria-hidden="true">&rarr;</span>
             </a>
           </PopoverGroup>

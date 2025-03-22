@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Header from './header'
 import { ContextJobStore } from '../context/jobStore'
+import * as Urls from "./../utilities/urls"
 
 export default function Login() {
 
@@ -58,8 +59,7 @@ export default function Login() {
         return false;
       };
       setLoader(true);
-      let url = "http://localhost:3143/freshdb/users/validate"
-      //let url = "https://sachadigi.com/freshdb/users/validate"
+      let url =  Urls.MAIN_URL + Urls.LOGIN;
       console.log('Form Data Submitted:', formData);
       axios.post(url, formData, {
         headers: {

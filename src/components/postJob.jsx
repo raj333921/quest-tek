@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import { ContextJobStore } from '../context/jobStore'
 import * as Constants from "../constants"
-
+import * as Urls from "./../utilities/urls"
 export default function PostJob() {
 
   const navigate = useNavigate();
@@ -22,7 +22,8 @@ export default function PostJob() {
     location: '',
     salary: '',
     description: '',
-    techDetails: ''
+    techDetails: '',
+    userId: ''
   });
 
   let initial = { "jobRoleError": false, "clientError": false, "commuteTypeError": false, "languageError": false, "employeeTypeError": false, "experienceError": false, "locationError": false, "salaryError": false, "descriptionError": false, "techDetailsError": false };
@@ -53,7 +54,7 @@ export default function PostJob() {
   };
   const handleClick = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    let url = "https://sachadigi.com/freshdb/jobListing"
+    let url =  Urls.MAIN_URL + Urls.GET_JOB;
     console.log('Form Data Submitted:', formData);
     let flag = false;
     setErrorVal(initial);
@@ -108,6 +109,7 @@ export default function PostJob() {
     if (flag) {
       return false;
     };
+    formData.userId = state?.content?.userId;
     axios.post(url, formData, {
       headers: {
         'Content-Type': 'application/json'
@@ -123,7 +125,7 @@ export default function PostJob() {
 
   return (
     <>
-      <AuthHeader />
+      <AuthHeader name={state?.content?.firstName}/>
       <header className="">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{ textAlign: "left" }}></h1>
@@ -246,7 +248,7 @@ export default function PostJob() {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="experience" className="block text-sm/6 font-medium text-gray-900">
-                  Experience*
+                {errorVal.experienceError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Experience*</span> : "Experience*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <select id="experience" name="experience"
@@ -282,7 +284,7 @@ export default function PostJob() {
 
               <div className="sm:col-span-3">
                 <label htmlFor="location" className="block text-sm/6 font-medium text-gray-900">
-                  Location*
+                {errorVal.locationError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Location*</span> : "Location*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <input
@@ -298,7 +300,7 @@ export default function PostJob() {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="salary" className="block text-sm/6 font-medium text-gray-900">
-                  Salary(Gross/Per day)
+                {errorVal.salaryError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Salary(Gross/Per day)*</span> : "Salary(Gross/Per day)*"}
                 </label>
                 <div className="mt-2 grid grid-cols-1">
                   <input
@@ -321,7 +323,7 @@ export default function PostJob() {
 
             <div className="col-span-full">
               <label htmlFor="description" className="block text-sm/6 font-medium text-gray-900">
-                Job Description*
+              {errorVal.descriptionError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Job Description*</span> : "Job Description*"}
               </label>
               <div className="mt-2">
                 <textarea
@@ -337,11 +339,9 @@ export default function PostJob() {
             </div>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
-
             <div className="col-span-full">
               <label htmlFor="techDetails" className="block text-sm/6 font-medium text-gray-900">
-                Technical Details*
+              {errorVal.techDetailsError ? <span id="errmsg" style={{ color: 'RED' }}>Please enter Technical Details*</span> : "Technical Details*"}
               </label>
               <div className="mt-2">
                 <textarea
