@@ -41,7 +41,7 @@ export default function Login() {
     event.preventDefault();
     if (event?.target.id === "save") {
       let flag = false;
-      setFormData({ ...formData, userId: state.content.userId, pwd: state.content.pwd });
+     // setFormData({ ...formData, userId: state.content.userId, pwd: state.content.pwd });
       setErrorVal(initial);
       switch (true) {
         case check(formData.userId):

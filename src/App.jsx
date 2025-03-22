@@ -16,18 +16,22 @@ function App() {
       })
     );
   }, []);
+  const dataShow = (name,align) =>{
+    return (<div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{ textAlign: align }}>{name}</h1>
+    </div>);
+  }
   return (
     <>
       <Header />
       <header className="">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{ textAlign: "left" }}>Available Jobs</h1>
-        </div>
+     {dataShow("Available Jobs","left")}
       </header>
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {jobData?.map((item) => <> <AvailableJobs key={item.jobId} job={item} /> <br /></>)}
         </div>
+        {jobData? '':dataShow("No Jobs are listed","center")}
       </main>
     </>
   )
