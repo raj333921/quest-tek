@@ -26,7 +26,7 @@ export default function Login() {
       [name]: value,
     });
   };
-  const { state, dispatch } = React.useContext(ContextJobStore);
+  const { dispatch } = React.useContext(ContextJobStore);
   const check = (value) => {
     if (value === '' || value === null || value === undefined) {
       return true;
