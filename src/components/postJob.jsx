@@ -1,6 +1,5 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import React, { useEffect, useState } from 'react'
-import AuthHeader from './authHeader'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import { ContextJobStore } from '../context/jobStore'
@@ -145,7 +144,6 @@ export default function PostJob() {
 
   return (
     <>
-      <AuthHeader name={state?.content?.firstName}/>
       <header className="">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <h1 className="text-1xl font-bold tracking-tight text-black-300" style={{ textAlign: "left" }}></h1>

@@ -4,12 +4,13 @@ import App from './App.jsx'
 import ViewJob from './components/viewJob'
 import Company from './components/Company'
 import ApplyForJob from './components/applyForJob'
-import PostJob from './components/PostJob'
-import Login from './components/Login'
-import Header from './components/header'
+import PostJob from './components/postJob'
+import Login from './components/login'
 import {ContextJobStoreProvider} from './context/jobStore'
 import * as Constants from "./constants"
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import AuthLayout from './components/authLayout'
+import ViewAuthJobs from './components/viewAuthJobs.jsx'
 
 
 const router = createBrowserRouter(
@@ -21,6 +22,8 @@ const router = createBrowserRouter(
         <Route path={Constants.APPLY_JOB} element={<ApplyForJob />} />
         <Route path={Constants.LOGIN} element={<Login />} />
         <Route path={Constants.POST_JOB} element={<PostJob />} />
+        <Route path={Constants.LAYOUT} element={<AuthLayout />} />
+        <Route path={Constants.VIEW_JOB_AUTH} element={<ViewAuthJobs />} />
       </Route>
 
   )

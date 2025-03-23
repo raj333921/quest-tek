@@ -9,6 +9,8 @@
   "LOGIN": "/login",
   "LOGOUT": "/logout",
   "HOME": "/",
+  "LAYOUT":"/authLayout",
+  "VIEW_JOB_AUTH":"/authLayoutViewJobs",
   "POST_JOB": "/postJob",
   "EMAILID": "admin@sachadigi.com",
   "COMPANYNAME": "<SACHA> DiGi 2.0",

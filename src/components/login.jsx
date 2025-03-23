@@ -71,7 +71,7 @@ export default function Login() {
         response.data && dispatch({
           type: 'AUTHENTICATE',
           content: response.data
-        }); navigate(Constants.POST_JOB);
+        }); navigate(Constants.LAYOUT);
         setErAlert(false);
 
       })
