@@ -26,7 +26,8 @@ export default function PostJob() {
     salary: '',
     description: '',
     techDetails: '',
-    userId: ''
+    userId: '',
+    businessName:''
   });
 
   let initial = { "jobRoleError": false, "clientError": false, "commuteTypeError": false, "languageError": false, "employeeTypeError": false, "experienceError": false, "locationError": false, "salaryError": false, "descriptionError": false, "techDetailsError": false };
@@ -42,7 +43,7 @@ export default function PostJob() {
 
   useEffect(() => {
     if (!state || !state.content) {
-      navigate(Constants.HOME_PAGE);
+      navigate(Constants.LOGIN);
     }
   }, []);
 
@@ -59,9 +60,9 @@ export default function PostJob() {
   const handleClickCancel = () => {
     dispatch({
       type: 'AUTHENTICATE',
-      content: null
+      content: state.content
     })
-    navigate('/');
+    navigate('/authLayout');
   }
   const handleClick = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -122,6 +123,7 @@ export default function PostJob() {
     };
     setLoader(true);
     formData.userId = state?.content?.userId;
+    formData.businessName = state?.content?.businessName;
     axios.post(url, formData, {
       headers: {
         'Content-Type': 'application/json'
@@ -378,13 +380,13 @@ export default function PostJob() {
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <button type="button" 
-            onClick={handleClickCancel} className="text-sm/6 font-semibold text-gray-900">
+            onClick={handleClickCancel} className="text-sm/6 font-semibold text-gray-900 cursorPointer">
             Cancel
           </button>
           <button
             type="submit"
             onClick={handleClick}
-            className="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
+            className=" cursorPointer rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-yellow-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
           >
             Save
           </button>

@@ -3,17 +3,26 @@ import './../App.css'
 import AvailableJobs from './availableJobs'
 import React from 'react'
 import * as Urls from "./../utilities/urls"
+import { ContextJobStore } from '../context/jobStore'
 function ViewAuthJobs() {
   const [jobData, setJobData] = React.useState(null);
-  const endpoints = [
-    Urls.MAIN_URL + Urls.GET_JOB
-  ];
-  React.useEffect(() => {
-    axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
-      axios.spread(({ data: index }) => {
-        setJobData(index);
-      })
-    );
+  const { state } = React.useContext(ContextJobStore);
+  
+  React.useEffect(() => {  
+    let inputVal = {
+      userId: state?.content?.userId,
+      businessName: state?.content?.businessName
+    }
+    axios.post(Urls.MAIN_URL + Urls.GET_AUTHJOB, inputVal)
+    .then(function (response) {
+      setJobData(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
   }, []);
   const dataShow = (name,align) =>{
     return (<div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -23,7 +32,7 @@ function ViewAuthJobs() {
   return (
     <>
       <header className="">
-     {dataShow("Available Jobs","left")}
+     {dataShow("Jobs posted by you","left")}
       </header>
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">

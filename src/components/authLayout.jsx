@@ -16,8 +16,8 @@ const user = {
 }
 
 const navigation = [
-  { name: 'Dashboard', current: true, id: 'dashboard' },
-  { name: 'View Jobs', current: false, id: 'viewJobs'  },
+  { name: 'Dashboard', current: false, id: 'dashboard' },
+  { name: 'View Jobs', current: true, id: 'viewJobs'  },
   { name: 'Post Jobs', current: false, id: 'postJobs' },
   { name: 'Applied Jobs', current: false, id: 'appliedJobs'  }
 ]
@@ -32,7 +32,7 @@ function classNames(...classes) {
 export default function AuthLayout() {
     const navigate = useNavigate();
     const { state } = React.useContext(ContextJobStore);
-    const [viewJob, setViewJob] = React.useState(false);
+    const [viewJob, setViewJob] = React.useState(true);
     const [postJob, setPostJob] = React.useState(false);
     const [appliedJob, setAppliedJob] = React.useState(false);
     useEffect(() => {
@@ -209,8 +209,8 @@ export default function AuthLayout() {
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-1xl font-bold tracking-tight text-yellow-600 " ></h1>
             <blockquote className="text-center text-2xl font-semibold text-gray-900 italic dark:text-white">
-  <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-500" style={{textAlign: "left"}}>
-    <span className="relative text-white dark:text-white-950">Hey, {state?.content?.firstName}</span>
+  <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-100" style={{textAlign: "left"}}>
+    <span className="relative text-white dark:text-yellow-950">Welcome, {state?.content?.businessName}</span>
   </span>
 </blockquote>
           </div>

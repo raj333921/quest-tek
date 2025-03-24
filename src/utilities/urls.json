@@ -1,6 +1,7 @@
 {
   "MAIN_URL": "https://sachadigi.com/freshdb/",
   "GET_JOB": "jobListing",
+  "GET_AUTHJOB": "jobListing/auth",
   "APPLYJOB": "applyJob",
   "LOGIN":"users/validate"
 }
