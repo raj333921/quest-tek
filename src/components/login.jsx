@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Header from './header'
+import Footer from './footer'
 import { ContextJobStore } from '../context/jobStore'
 import * as Urls from "./../utilities/urls"
 
@@ -157,9 +158,14 @@ export default function Login() {
                 Sign in
               </button>
             </div>
+            <div>
+            <a href={Constants.MAILID}>Dont you have account ? please drop an email</a>.
+          </div>
           </form>
+          
         </div>
       </div>
+      <Footer />
     </>
   )
 }

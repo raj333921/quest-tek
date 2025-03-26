@@ -2,6 +2,7 @@ import Header from './components/header'
 import axios from 'axios'
 import './App.css'
 import AvailableJobs from './components/availableJobs'
+import Footer from './components/footer'
 import React from 'react'
 import * as Urls from "./utilities/urls"
 function App() {
@@ -33,6 +34,8 @@ function App() {
         </div>
         {jobData? '':dataShow("No Jobs are listed","center")}
       </main>
+      
+      <Footer />
     </>
   )
 }
