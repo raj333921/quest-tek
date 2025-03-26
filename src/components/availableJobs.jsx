@@ -15,7 +15,7 @@ import { ContextJobStore } from '../context/jobStore'
 import * as Constants from "../constants"
 import { dataFormat } from '../utilities/common'
 
-export default function AvailableJobs({ job }) {
+export default function AvailableJobs({ job,flag }) {
   const navigate = useNavigate();
   const { dispatch } = React.useContext(ContextJobStore);
   return (
@@ -55,7 +55,29 @@ export default function AvailableJobs({ job }) {
           </div>
         </div>
       </div>
+
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
+      {flag ? <span className="sm:ml-3">
+          <button
+            type="button"
+            id="view"
+            onClick={() => {
+              dispatch({
+                type: 'JOB',
+                content: job
+              });
+              navigate(Constants.POST_JOB);
+            }}
+            className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+</svg>
+
+
+            {Constants.EDIT}
+          </button>
+        </span>:
         <span className="sm:ml-3">
           <button
             type="button"
@@ -72,7 +94,7 @@ export default function AvailableJobs({ job }) {
             <LinkIcon avria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
             {Constants.VIEW}
           </button>
-        </span>
+        </span>}
 
         <span className="sm:ml-3">
           <button

@@ -30,7 +30,7 @@ function App() {
       </header>
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {jobData?.map((item) => <> <AvailableJobs key={item.jobId} job={item} /> <br /></>)}
+          {jobData?.map((item) => <> <AvailableJobs key={item.jobId} job={item} flag={false}/> <br /></>)}
         </div>
         {jobData? '':dataShow("No Jobs are listed","center")}
       </main>
