@@ -31,9 +31,7 @@ const Header = () => {
     <header className="bg-white">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <h1 className="text-xl/8 font-semibold text-yellow-600">
-            {Constants.COMPANYNAME}
-          </h1>
+          <div className='logo' />
         </div>
         <div className="flex lg:hidden">
           <button
@@ -64,9 +62,7 @@ const Header = () => {
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <h1 className="text-base/7 font-semibold text-yellow-600">
-              {Constants.COMPANYNAME}
-            </h1>
+            <div className='logo' />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}

@@ -7,4 +7,9 @@
 .cursorPointer{
   cursor: pointer;
 }
+.logo{
+  background-image: url(./assets/logo.png);
+  height: 100px;
+  width: 310px;
+}
 @import "tailwindcss";
