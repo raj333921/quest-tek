@@ -53,6 +53,10 @@ export default function AvailableJobs({ job,flag }) {
             <CalendarIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
             Closes on {dataFormat(job.closeDate)}
           </div>
+          <div className="mt-2 flex items-center text-sm text-gray-500">
+            <BriefcaseIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+            {job.businessName}
+          </div>
         </div>
       </div>
 
