@@ -6,6 +6,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import { ContextJobStore } from '../context/jobStore'
 import * as Constants from "../constants"
+import ViewAuthApplied from './viewAuthApplied'
 
 
 const user = {
@@ -216,7 +217,7 @@ export default function AuthLayout() {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{viewJob && <ViewAuthJobs />}{appliedJob && <PostJob />}{postJob && <PostJob />}</div>
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{viewJob && <ViewAuthJobs />}{appliedJob && <ViewAuthApplied />}{postJob && <PostJob />}</div>
         </main>
       </div>
     </>

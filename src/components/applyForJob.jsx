@@ -18,7 +18,7 @@ export default function ApplyForJob() {
   const navigate = useNavigate();
   let initial = { "firstNameError": false, "lastNameError": false, "emailIdError": false, "resumeError": false }
   const [errorVal, setErrorVal] = useState(initial);
-  const [inputVal, setInputVal] = useState({ "firstName": "", "lastName": "", "emailId": "", "jobRole": "", "jobId": "", "country": "Belgium", "workPermit": "no", "resume": [], "salary": "", "remarks": "" });
+  const [inputVal, setInputVal] = useState({ "firstName": "", "lastName": "", "emailId": "", "jobRole": "", "jobId": "", "country": "Belgium", "workPermit": "no", "resume": [], "salary": "", "remarks": "", "businessName":"","businessId":""});
 
   useEffect(() => {
     if (!state || !state.content) {
@@ -47,7 +47,6 @@ export default function ApplyForJob() {
   }
   const saveResume = (event) => {
     let url = Urls.MAIN_URL + Urls.APPLYJOB;
-    //let url = "https://sachadigi.com/freshdb/applyJob"
     setInputVal({ ...inputVal, jobRole: state.content.jobRole, jobId: state.content.id, resume: file })
     if (event?.target.id === "save" && state?.content) {
       let flag = false;
@@ -78,6 +77,8 @@ export default function ApplyForJob() {
         return false;
       }
       setLoader(true);
+      inputVal.businessName = state?.content?.businessName;
+      inputVal.businessId = state?.content?.userId;
       axios.post(url, inputVal, {
         headers: {
           'Content-Type': 'multipart/form-data'
