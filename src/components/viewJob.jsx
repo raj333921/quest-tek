@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Constants from "../constants"
 import Header from './header'
+
+import { dateFormat } from '../utilities/common'
 export default function ViewJob() {
   const { state, dispatch } = React.useContext(ContextJobStore);
   const navigate = useNavigate();
@@ -57,7 +59,7 @@ export default function ViewJob() {
       <div className="mt-6 border-t border-gray-100">
         <dl className="divide-y divide-gray-100">
           {mapToScreenFlow("Application for", state.content.jobRole)}
-          {mapToScreenFlow("Closing Date", state.content.closeDate)}
+          {mapToScreenFlow("Closing Date", dateFormat(state.content.closeDate))}
           {mapToScreenFlow("Type", state.content.commuteType)}
           {mapToScreenFlow("Language", state.content.language)}
           {mapToScreenFlow("Experience", state.content.experience)}

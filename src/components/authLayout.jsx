@@ -18,9 +18,9 @@ const user = {
 
 const navigation = [
   { name: 'Dashboard', current: false, id: 'dashboard' },
-  { name: 'View Jobs', current: true, id: 'viewJobs'  },
+  { name: 'Applied Jobs', current: true, id: 'appliedJobs'  },
+  { name: 'View Jobs', current: false, id: 'viewJobs'  },
   { name: 'Post Jobs', current: false, id: 'postJobs' },
-  { name: 'Applied Jobs', current: false, id: 'appliedJobs'  }
 ]
 const userNavigation = [
   { name: 'Log out', id: 'logOut' },
@@ -33,9 +33,9 @@ function classNames(...classes) {
 export default function AuthLayout() {
     const navigate = useNavigate();
     const { state } = React.useContext(ContextJobStore);
-    const [viewJob, setViewJob] = React.useState(true);
+    const [viewJob, setViewJob] = React.useState(false);
     const [postJob, setPostJob] = React.useState(false);
-    const [appliedJob, setAppliedJob] = React.useState(false);
+    const [appliedJob, setAppliedJob] = React.useState(true);
     useEffect(() => {
         if (!state || !state.content) {
           navigate(Constants.HOME_PAGE);

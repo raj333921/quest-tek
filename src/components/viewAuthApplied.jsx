@@ -1,9 +1,10 @@
 import React,{useEffect} from 'react'
 import { ContextJobStore } from '../context/jobStore'
-import { useNavigate } from "react-router-dom"
 import * as Urls from "./../utilities/urls"
 import axios from 'axios'
 import './../App.css'
+
+import { dateFormat } from '../utilities/common'
 
 export default function ViewAuthApplied() {
 
@@ -44,6 +45,9 @@ export default function ViewAuthApplied() {
             <td className="px-6 py-4">
             {item.workPermit}
             </td>
+            <td className="px-6 py-4">
+            {dateFormat(item.created_at)}
+            </td>
             <td className="px-6 py-4 text-right">
                 <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{item.fileName}</a>
             </td>
@@ -71,7 +75,10 @@ export default function ViewAuthApplied() {
                             Work Permit
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            <span className="sr-only">Resume</span>
+                            Uploaded
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-right">
+                            Resume
                         </th>
                     </tr>
                 </thead>
