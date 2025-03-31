@@ -3,7 +3,6 @@ import { ContextJobStore } from '../context/jobStore'
 import * as Urls from "./../utilities/urls"
 import axios from 'axios'
 import './../App.css'
-
 import { dateFormat } from '../utilities/common'
 
 export default function ViewAuthApplied() {
@@ -27,6 +26,31 @@ export default function ViewAuthApplied() {
           });
           }, []);
 
+    const handleFileDownload = (event) =>{
+        let inputVal = {
+            businessId: state?.content?.userId,
+            id: event.target.id,
+            businessName: state?.content?.businessName
+          }
+          axios.post(Urls.MAIN_URL + Urls.APPLYJOB+"/"+event.target.id, inputVal)
+          .then(function (response) {
+            const buf = new Uint8Array(response.data[0].resume.data);
+             const blob = new Blob([buf],{type: 'application/pdf'});
+             const url = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'example.pdf';
+              a.click();
+              window.URL.revokeObjectURL(url);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {
+            // always executed
+          });
+    }
+
     const jobDataIteration = () => {
         return jobData?.map(item => {
          return(<tr key={item.jobId} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -49,7 +73,7 @@ export default function ViewAuthApplied() {
             {dateFormat(item.created_at)}
             </td>
             <td className="px-6 py-4 text-right">
-                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{item.fileName}</a>
+                <a onClick={handleFileDownload} id={item.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{item.fileName}</a>
             </td>
         </tr>)})
     }
