@@ -235,7 +235,7 @@ export default function ApplyForJob() {
                       <span>Upload a file</span>
                       <input
                         value=''
-                        accept=".doc,.docx,.pdf"
+                        accept=".pdf"
                         onChange={handleFileChange} id="file-upload" name="file-upload" type="file" className="sr-only" />
                     </label>
                     <p className="pl-1">or drag and drop</p>

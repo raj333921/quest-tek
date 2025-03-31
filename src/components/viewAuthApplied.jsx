@@ -39,7 +39,7 @@ export default function ViewAuthApplied() {
              const url = window.URL.createObjectURL(blob);
               const a = document.createElement('a');
               a.href = url;
-              a.download = 'example.pdf';
+              a.download = response.data[0].fileName;
               a.click();
               window.URL.revokeObjectURL(url);
           })
@@ -73,7 +73,7 @@ export default function ViewAuthApplied() {
             {dateFormat(item.created_at)}
             </td>
             <td className="px-6 py-4 text-right">
-                <a onClick={handleFileDownload} id={item.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{item.fileName}</a>
+                <a onClick={handleFileDownload} id={item.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline cursorPointer">{item.fileName}</a>
             </td>
         </tr>)})
     }
