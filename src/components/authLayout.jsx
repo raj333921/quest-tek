@@ -64,6 +64,11 @@ export default function AuthLayout() {
                 setAppliedJob(true);
                 setViewJob(false);
                 break;
+            case 'Edit Job':
+                setPostJob(false);
+                setAppliedJob(false);
+                setViewJob(false);
+                break;
             case 'Log Out':
                 navigate('/');
                 break;

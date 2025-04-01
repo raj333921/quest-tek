@@ -5,6 +5,7 @@ import ViewJob from './components/viewJob'
 import Company from './components/Company'
 import ApplyForJob from './components/applyForJob'
 import PostJob from './components/postJob'
+import EditJob from './components/editJob'
 import Login from './components/login'
 import {ContextJobStoreProvider} from './context/jobStore'
 import * as Constants from "./constants"
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
         <Route path={Constants.APPLY_JOB} element={<ApplyForJob />} />
         <Route path={Constants.LOGIN} element={<Login />} />
         <Route path={Constants.POST_JOB} element={<PostJob />} />
+        <Route path={Constants.EDIT_JOB} element={<EditJob />} />
         <Route path={Constants.LAYOUT} element={<AuthLayout />} />
         <Route path={Constants.VIEW_JOB_AUTH} element={<ViewAuthJobs />} />
       </Route>

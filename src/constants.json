@@ -12,6 +12,7 @@
   "HOME": "/",
   "LAYOUT":"/authLayout",
   "VIEW_JOB_AUTH":"/authLayoutViewJobs",
+  "EDIT_JOB": "/editJob",
   "POST_JOB": "/postJob",
   "EMAILID": "admin@sachadigi.com",
   "MAILID":"mailto:admin@sachadigi.com",
