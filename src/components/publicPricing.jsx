@@ -1,7 +1,6 @@
 import { CheckIcon } from '@heroicons/react/20/solid'
 import Header from './header'
 import Footer from './footer'
-import * as Constants from "../constants"
 
 const tiers = [
   {
