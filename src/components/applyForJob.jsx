@@ -79,6 +79,9 @@ export default function ApplyForJob() {
       setLoader(true);
       inputVal.businessName = state?.content?.businessName;
       inputVal.businessId = state?.content?.userId;
+      inputVal.jobId = state.content.id;
+      inputVal.resume = file;
+      inputVal.jobRole = state.content.jobRole;
       axios.post(url, inputVal, {
         headers: {
           'Content-Type': 'multipart/form-data'

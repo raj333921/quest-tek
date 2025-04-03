@@ -1,6 +1,10 @@
+import * as Constants from "../constants"
 
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+
+  const navigate = useNavigate();
 return (
 
 
@@ -15,7 +19,9 @@ return (
             <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
         <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Pricing</a>
+            <a onClick={(e) => {e.preventDefault();
+                        navigate(Constants.PRICINGPAGE);
+                        }} className="hover:underline me-4 md:me-6">Pricing</a>
         </li>
         <li>
             <a href="#" className="hover:underline">Contact</a>

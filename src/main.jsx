@@ -11,7 +11,8 @@ import {ContextJobStoreProvider} from './context/jobStore'
 import * as Constants from "./constants"
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import AuthLayout from './components/authLayout'
-import ViewAuthJobs from './components/viewAuthJobs.jsx'
+import ViewAuthJobs from './components/viewAuthJobs'
+import PublicPricing from './components/publicPricing'
 
 
 const router = createBrowserRouter(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
         <Route path={Constants.EDIT_JOB} element={<EditJob />} />
         <Route path={Constants.LAYOUT} element={<AuthLayout />} />
         <Route path={Constants.VIEW_JOB_AUTH} element={<ViewAuthJobs />} />
+        <Route path={Constants.PRICINGPAGE} element={<PublicPricing />} />
       </Route>
 
   )

@@ -3,5 +3,6 @@
   "GET_JOB": "jobListing",
   "GET_AUTHJOB": "jobListing/auth",
   "APPLYJOB": "applyJob",
+  "GET_APPLYJOB": "applyJob/auth",
   "LOGIN":"users/validate"
 }

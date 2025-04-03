@@ -14,7 +14,7 @@ export default function ViewAuthApplied() {
             businessId: state?.content?.userId,
             businessName: state?.content?.businessName
           }
-          axios.get(Urls.MAIN_URL + Urls.APPLYJOB, inputVal)
+          axios.post(Urls.MAIN_URL + Urls.GET_APPLYJOB, inputVal)
           .then(function (response) {
             setJobData(response.data);
           })
