@@ -165,8 +165,6 @@ export default function EditJob() {
         setAlert(false);
       });
   };
-
-
   return (
     <>
       <header className="">
